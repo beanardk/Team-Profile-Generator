@@ -22,6 +22,7 @@
   "homepage": "https://github.com/beanardk/Team-Profile-Generator#readme",
   "dependencies": {
     "inquirer": "^8.2.0",
+    "jest": "^27.4.7",
     "jsdom": "^19.0.0"
   }
 }
