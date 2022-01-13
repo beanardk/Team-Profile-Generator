@@ -16,6 +16,28 @@ module.exports.askForTeamMember = async () => {
     return Answer.type;
 }
 
-module.exports.askForManager = async () {
-    
+module.exports.askForManager = async () => {
+    let Answer = await.inquirer.prompt([
+        {
+            type: 'input',
+            name: 'Name',
+            message: 'Provide the Managers name.',
+        },
+        {
+            type: 'input',
+            name: 'ID',
+            message: 'Provide the Managers ID.',
+        },
+        {
+            type: 'input',
+            name: 'Email',
+            message: 'Provide the Managers email.',
+        },
+        {
+            type: 'input',
+            name: 'Office',
+            message: 'Provide the Managers office number.',
+        }
+    ])
 }
+
