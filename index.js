@@ -1,15 +1,40 @@
-const Engineer = require('./lib/engineer');
-const Manager = require('./lib/manager');
-const Intern = require('./lib/intern');
+const GenerateHTML = require('./src/generateHTML');
+const Profile = require('./src/profiles')
+const fs = require('fs')
 
-const inquirer = require('inquirer');
-const fs = require('fs');
+let Template = GenerateHTML.createTemplate()
 
-const generateHTML = require('./src/generateHTML');
+let document = Template.document
+let profiles = document.getElementById("team-profiles")
+let Manager;
 
-const teamArray = [];
+const TeamMember = async () => {
+    let Type = await Profile.askForTeamMember()
 
-function newManager() {
-    
+    switch(Type) {
+        case "Manager":
+            Manager = await Profile.askForManager()
+            GenerateHTML.addManager(document, profiles, Manager)
+            TeamMember()
+        break;
+
+        case "Engineer":
+            let Engineer = await Profile.askForEngineer()
+            GenerateHTML.addEngineer(document, profiles, Engineer)
+            TeamMember()
+        break;
+
+        case "Intern":
+            let Intern = await Profile.askForIntern()
+            GenerateHTML.addIntern(document, profiles, Intern)
+            TeamMember()
+        break;
+
+        case "Complete":
+            GenerateHTML.writeHTML(Template.dom, Manager)
+        break;
+    }
 }
+
+TeamMember()
 
