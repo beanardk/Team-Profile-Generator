@@ -4,7 +4,7 @@ const Engineer = require('../lib/Engineer')
 const Intern = require('../lib/Intern')
 
 module.exports.askForTeamMember = async () => {
-    let Answer = await.inquirer.prompt([
+    let Answer = await inquirer.prompt([
         {
             type: 'list',
             message: 'Please add a team member.\*Select complete if all members have been added.*',
@@ -17,7 +17,7 @@ module.exports.askForTeamMember = async () => {
 }
 
 module.exports.askForManager = async () => {
-    let Answer = await.inquirer.prompt([
+    let Answer = await inquirer.prompt([
         {
             type: 'input',
             name: 'Name',
